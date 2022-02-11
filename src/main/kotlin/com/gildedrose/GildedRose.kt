@@ -3,6 +3,9 @@ package com.gildedrose
 class GildedRose(var items: Array<Item>) {
 
     private val MAX_QUALITY = 50
+    private val BACKSTAGE_DOUBLE_QUALITY_INCREASE_DATES =  (6..10)
+    private val BACKSTAGE_TIPLE_QUALITY_INCREASE_DATES = 0..5
+
 
     fun updateQuality() {
         for (i in items.indices) {
@@ -18,13 +21,13 @@ class GildedRose(var items: Array<Item>) {
                     item.quality = item.quality + 1
 
                     if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-                        if (item.sellIn in 6..10) {
+                        if (item.sellIn in BACKSTAGE_DOUBLE_QUALITY_INCREASE_DATES) {
                             if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 1
                             }
                         }
 
-                        if (item.sellIn < 6) {
+                        if (item.sellIn in BACKSTAGE_TIPLE_QUALITY_INCREASE_DATES) {
                             if (item.quality < MAX_QUALITY) {
                                 item.quality = item.quality + 2
                             }
